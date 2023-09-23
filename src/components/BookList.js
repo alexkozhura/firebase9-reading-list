@@ -1,7 +1,12 @@
+import { db } from '../firebase/config'
+// the doc function gets reference to a document
+import { doc, deleteDoc } from 'firebase/firestore'
+
 export default function BookList({ books }) {
 
   const handleClick = async (id) => {
-    console.log(id)
+    const ref = doc(db, 'books', id)
+    await deleteDoc(ref)
   }
 
   return (
